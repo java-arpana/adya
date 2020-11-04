@@ -78,6 +78,8 @@ public class SQLServerDockerImageTest {
             }
             catch (Exception e) {
                 logger.error(e);
+                e.printStackTrace();
+                logger.error(Arrays.toString(e.getStackTrace()));
             }
         }
     }
