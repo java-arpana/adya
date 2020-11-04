@@ -72,8 +72,13 @@ public class SQLServerDockerImageTest {
             Assertions.assertDoesNotThrow(() -> connectToMSSQLDatabase(dockerImage));
         }
         finally {
-            // Stop and remove container
-            dockerUtility.removeContainerIfExists(containerName);
+            try {
+                // Stop and remove container
+                dockerUtility.removeContainerIfExists(containerName);
+            }
+            catch (Exception e) {
+                logger.error(e);
+            }
         }
     }
 }
