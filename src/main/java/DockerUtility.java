@@ -47,6 +47,11 @@ public class DockerUtility {
         logger.info("Checking if docker container '" + containerName + "' exists");
         boolean result = false;
         if(containerName != null) {
+            dockerClient.listContainersCmd()
+                    .withShowAll(checkAllContainers)
+                    .exec()
+                    .stream()
+                    .forEach(logger::info);
             result = dockerClient.listContainersCmd()
                     .withShowAll(checkAllContainers)
                     .exec()
